@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Billing Platform Data Requirements</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+        }
+        
+        .section-card {
+            transition: all 0.3s ease;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .section-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, rgba(96, 165, 250, 0.2) 0%, rgba(96, 165, 250, 0.2) 100%);
+            padding: 0 0.25rem;
+            border-radius: 0.25rem;
+        }
+
+        h1, h2, h3 {
+            color: #1f2937;
+        }
+
+        h1 {
+            font-size: 2.25rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+        }
+
+        .text-gray-600 {
+            color: #4b5563;
+        }
+
+        .text-gray-700 {
+            color: #374151;
+        }
+
+        .text-gray-800 {
+            color: #1f2937;
+        }
+
+        .text-blue-500 {
+            color: #3b82f6;
+        }
+
+        .bg-blue-50 {
+            background-color: #eff6ff;
+        }
+
+        .bg-gray-50 {
+            background-color: #f9fafb;
+        }
+
+        .bg-gray-100 {
+            background-color: #f3f4f6;
+        }
+
+        .bg-yellow-50 {
+            background-color: #fefce8;
+        }
+
+        .border-blue-500 {
+            border-color: #3b82f6;
+        }
+
+        .border-yellow-400 {
+            border-color: #fbbf24;
+        }
+
+        a {
+            color: #3b82f6;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        pre {
+            font-family: 'Courier New', Courier, monospace;
+            overflow-x: auto;
+        }
+
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            .section-card {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="max-w-4xl mx-auto p-6">
+        <!-- Header -->
+        <div class="mb-8 text-center">
+            <h1 class="text-3xl font-bold text-gray-800 mb-2">Data Requirements Specification</h1>
+            <h2 class="text-xl text-gray-600">Midwest Service Bureau</h2>
+        </div>
+
+        <!-- Introduction -->
+        <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+            <p class="text-gray-700 leading-relaxed">
+                This document outlines the necessary, recommended, and optional data fields for integration with our medical billing platform. These specifications are intended to streamline data exchange and ensure compliance with regulatory requirements (e.g., Regulation F).
+            </p>
+        </div>
+
+        <!-- Required Fields Section -->
+        <div class="section-card bg-white rounded-lg shadow-sm p-6 mb-6">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                <span class="inline-block w-8 h-8 bg-blue-500 text-white rounded-full text-center leading-8 mr-2">1</span>
+                Required Fields
+            </h2>
+            <p class="text-gray-600 mb-4">The following fields must be included in all data submissions:</p>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="space-y-4">
+                    <h3 class="font-medium text-gray-700">Patient Information</h3>
+                    <ul class="list-disc list-inside text-gray-600 space-y-2">
+                        <li>First Name <code class="font-mono text-sm">first_name</code></li>
+                        <li>Last Name <code class="font-mono text-sm">last_name</code></li>
+                        <li>Address <code class="font-mono text-sm">address</code></li>
+                        <li>Date of Birth (DOB) and/or SSN <code class="font-mono text-sm">dob and/or ssn</code></li>
+                        <li>Email Address <code class="font-mono text-sm">email_address</code></li>
+                        <li>Phone Numbers (preferably mobile) <code class="font-mono text-sm">phone_numbers</code></li>
+                    </ul>
+                </div>
+                <div class="space-y-4">
+                    <h3 class="font-medium text-gray-700">Financial Information</h3>
+                    <ul class="list-disc list-inside text-gray-600 space-y-2">
+                        <li>Initially Billed Amount <code class="font-mono text-sm">initially_billed_amount</code></li>
+                        <li>Payments Made to Date <code class="font-mono text-sm">payments_made</code></li>
+                        <li>Total Remaining Balance <code class="font-mono text-sm">total_remaining_balance</code></li>
+                        <li>Date of Service <code class="font-mono text-sm">date_of_service</code></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recommended Fields Section -->
+        <div class="section-card bg-white rounded-lg shadow-sm p-6 mb-6">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                <span class="inline-block w-8 h-8 bg-green-500 text-white rounded-full text-center leading-8 mr-2">2</span>
+                Strongly Recommended Fields
+            </h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="space-y-4">
+                    <h3 class="font-medium text-gray-700">Provider Information</h3>
+                    <ul class="list-disc list-inside text-gray-600 space-y-2">
+                        <li>Provider Name <code class="font-mono text-sm">provider_name</code></li>
+                        <li>Procedure Codes (CPT, ICD) <code class="font-mono text-sm">procedure_codes</code></li>
+                        <li>Procedure Description <code class="font-mono text-sm">procedure_description</code></li>
+                        <li>Location of Provider Office <code class="font-mono text-sm">provider_office_location</code></li>
+                    </ul>
+                </div>
+                <div class="space-y-4">
+                    <h3 class="font-medium text-gray-700">Visit Information</h3>
+                    <ul class="list-disc list-inside text-gray-600 space-y-2">
+                        <li>Date of Visit <code class="font-mono text-sm">date_of_visit</code></li>
+                        <li>Statement ID <code class="font-mono text-sm">statement_id</code></li>
+                        <li>Patient Identifier <code class="font-mono text-sm">patient_identifier</code></li>
+                        <li>Account Identifier <code class="font-mono text-sm">account_identifier</code></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Minors Section -->
+        <div class="section-card bg-white rounded-lg shadow-sm p-6 mb-6">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                <span class="inline-block w-8 h-8 bg-purple-500 text-white rounded-full text-center leading-8 mr-2">3</span>
+                Additional Requirements for Minors
+            </h2>
+            <div class="space-y-4">
+                <h3 class="font-medium text-gray-700">Guarantor Information</h3>
+                <ul class="list-disc list-inside text-gray-600 space-y-2">
+                    <li>Guarantor First Name</li>
+                    <li>Guarantor Last Name</li>
+                    <li>Guarantor Date of Birth (DOB)</li>
+                    <li>Guarantor Relationship to Patient</li>
+                </ul>
+                <p class="text-gray-600 italic mt-2">Note: While the relationship field is not mandatory, providing this information is highly appreciated for clarity.</p>
+            </div>
+        </div>
+
+        <!-- Optional Fields Section -->
+        <div class="section-card bg-white rounded-lg shadow-sm p-6 mb-6">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                <span class="inline-block w-8 h-8 bg-yellow-500 text-white rounded-full text-center leading-8 mr-2">4</span>
+                Optional Fields
+            </h2>
+            <ul class="list-disc list-inside text-gray-600 space-y-2">
+                <li>Insurance Information (policy numbers, coverage details)</li>
+                <li>Additional Contact Information (secondary phone numbers, alternate email addresses)</li>
+                <li>Custom Notes or Special Instructions</li>
+            </ul>
+        </div>
+
+        <!-- Format Guidelines -->
+        <div class="section-card bg-white rounded-lg shadow-sm p-6 mb-6">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">Field Format Guidelines</h2>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="bg-gray-50 p-3 rounded">
+                    <span class="font-medium">Names & Descriptions:</span>
+                    <span class="text-gray-600">Text, up to 200 characters. Emoji allowed.</span>
+                </div>
+                <div class="bg-gray-50 p-3 rounded">
+                    <span class="font-medium">Date of Birth:</span>
+                    <span class="text-gray-600">Preferred: MM/DD/YYYY, but other common formats are accepted</span>
+                </div>
+                <div class="bg-gray-50 p-3 rounded">
+                    <span class="font-medium">SSN:</span>
+                    <span class="text-gray-600">9 digits (any format)</span>
+                </div>
+                <div class="bg-gray-50 p-3 rounded">
+                    <span class="font-medium">Phone Numbers:</span>
+                    <span class="text-gray-600">Up to 10 digits (any format)</span>
+                </div>
+                <div class="bg-gray-50 p-3 rounded">
+                    <span class="font-medium">Amounts:</span>
+                    <span class="text-gray-600">Decimal format (12345.67)</span>
+                </div>
+                <div class="bg-gray-50 p-3 rounded">
+                    <span class="font-medium">Identifiers:</span>
+                    <span class="text-gray-600">Alphanumeric, max 50 chars</span>
+                </div>
+            </div>
+            <!-- Additional Format Notes -->
+            <div class="mt-4 bg-yellow-50 border-l-4 border-yellow-400 p-4">
+                <h3 class="font-medium text-gray-800 mb-2">Format Notes:</h3>
+                <ul class="list-disc list-inside text-gray-600 space-y-2">
+                    <li>Phone numbers will be standardized internally - submit in any standard format</li>
+                    <li>SSNs can be submitted with or without dashes/spaces</li>
+                    <li>Our system will handle format standardization for phone numbers and SSNs</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Compliance Notes -->
+        <div class="section-card bg-white rounded-lg shadow-sm p-6 mb-6">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">Compliance Notes</h2>
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                <ul class="list-disc list-inside text-gray-600 space-y-2">
+                    <li>Ensure data integrity and accuracy for all required and recommended fields. Financial fields are required by law and cannot be waived</li>
+                    <li>Data submissions must comply with all relevant privacy and security regulations (HIPAA, GDPR)</li>
+                    <li>Sensitive information must be transmitted using our API, Portal, or SFTP. We do not accept email or fax submissions.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Submission Methods -->
+        <div class="section-card bg-white rounded-lg shadow-sm p-6">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">Submission Methods</h2>
+            <div class="space-y-4">
+                <div class="flex items-center space-x-3">
+                    <span class="inline-block w-6 h-6 bg-gray-200 rounded-full text-center leading-6 text-sm">1</span>
+                    <span class="text-gray-700">CSV or Excel File (preferred format: CSV)</span>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <span class="inline-block w-6 h-6 bg-gray-200 rounded-full text-center leading-6 text-sm">2</span>
+                    <span class="text-gray-700">API Integration (contact development team for documentation)</span>
+                </div>
+            </div>
+
+            <!-- CSV Example -->
+            <div class="mt-6">
+                <h3 class="text-lg font-medium text-gray-800 mb-2">CSV File Example:</h3>
+                <pre class="bg-gray-100 p-4 rounded text-sm overflow-auto">
+Patient First Name,Patient Last Name,Date of Birth,SSN,Email,Phone Number,Initially Billed Amount,Payments Made,Total Remaining Balance,Date of Service
+John,Doe,01/15/1980,123-45-6789,john.doe@example.com,555-1234,1000.00,200.00,800.00,01/01/2023
+Jane,Smith,02/20/1990,987-65-4321,jane.smith@example.com,555-5678,1500.00,500.00,1000.00,02/15/2023
+                </pre>
+            </div>
+
+            <!-- API Call Example -->
+            <div class="mt-6">
+                <h3 class="text-lg font-medium text-gray-800 mb-2">Mock API Call Example:</h3>
+                <pre class="bg-gray-100 p-4 rounded text-sm overflow-auto">
+POST /api/v1/submitData HTTP/1.1
+Host: api.medicalbillingplatform.com
+Content-Type: application/json
+Authorization: Bearer your_access_token
+
+{
+    "patientFirstName": "John",
+    "patientLastName": "Doe",
+    "dateOfBirth": "1980-01-15",
+    "ssn": "123-45-6789",
+    "email": "john.doe@example.com",
+    "phoneNumber": "555-1234",
+    "initiallyBilledAmount": 1000.00,
+    "paymentsMade": 200.00,
+    "totalRemainingBalance": 800.00,
+    "dateOfService": "2023-01-01"
+}
+                </pre>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="mt-8 text-center text-gray-600 text-sm">
+            <p>For questions or clarification, please contact the implementation team here: <a href="mailto:tech@msbureau.com">tech@msbureau.com</a>.</p>
+            <p class="mt-2">Last updated: <span id="currentDate"></span></p>
+        </div>
+    </div>
+
+    <script>
+        // Add current date to footer with locale-based formatting
+        const userLocale = navigator.language || 'en-US'; // Detect user's locale
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('currentDate').textContent = new Date().toLocaleDateString(userLocale, options);
+    </script>
+</body>
+</html>
