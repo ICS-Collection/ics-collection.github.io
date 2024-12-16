@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Medical Billing Platform Data Requirements</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
@@ -278,19 +279,17 @@
                 </div>
                 <div class="flex items-center space-x-3">
                     <span class="inline-block w-6 h-6 bg-gray-200 rounded-full text-center leading-6 text-sm">2</span>
-                    <span class="text-gray-700">API Integration (contact development team for documentation)</span>
+                    <span class="text-gray-700">API Integration (OpenAPI docs and keys available by request)</span>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <span class="inline-block w-6 h-6 bg-gray-200 rounded-full text-center leading-6 text-sm">3</span>
+                    <span class="text-gray-700">SFTP Uploads (supports both password and key-based authentication)</span>
                 </div>
             </div>
 
-            <!-- CSV Example -->
+            <!-- CSV Download Link -->
             <div class="mt-6">
-                <h3 class="text-lg font-medium text-gray-800 mb-2">CSV File Example:</h3>
-                <pre class="bg-gray-100 p-4 rounded text-sm overflow-auto">
-Patient First Name,Patient Last Name,Date of Birth,SSN,Email,Phone Number,Initially Billed Amount,Payments Made,Total Remaining Balance,Date of Service
-John,Doe,01/15/1980,123-45-6789,john.doe@example.com,555-1234,1000.00,200.00,800.00,01/01/2023
-Jane,Smith,02/20/1990,987-65-4321,jane.smith@example.com,555-5678,1500.00,500.00,1000.00,02/15/2023
-                </pre>
-                <a href="data.csv" download class="inline-block mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+                <a href="data.csv" download class="inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
                     Download CSV Example
                 </a>
             </div>
